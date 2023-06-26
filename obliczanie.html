@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>obliczanie</title>
+</head>
+
+<body>
+    <div id="obliczenia">0</div>
+    <br>
+    <label>
+        Podaj wynik:
+        <br>
+        <input type="text" id="liczba">
+
+    </label>
+
+    <br>
+    <button id="potwierdz">potwierdz</button>
+    <br>
+    <div id="info"></div>
+    <div id="info2"></div>
+    <p>Ilość twoich punktów: </p>
+    <div id="info3">0</div>
+
+    <script>
+        var punkty=0;
+        document.getElementById("info3").innerHTML=punkty;
+         function wszystko(){
+        var liczba1 = Math.floor(Math.random() * 10);
+        console.log("wartosc 1 wylosowanej liczby  " + liczba1);
+
+        var liczba2 = Math.floor(Math.random() * 100);
+        console.log("wartosc 2 wylosowanej liczby  " + liczba2);
+
+        var flaga = Math.floor(Math.random() * 3);
+        console.log("twoj znak to: " + flaga);
+
+        var wyniksum = liczba1 + liczba2;
+        var wynikmin = liczba1 - liczba2;
+        var wynikmno = liczba1 * liczba2;
+        var wynikdziel = liczba1 / liczba2;
+        switch (flaga) {
+            case flaga = 0: // +
+
+                document.getElementById("obliczenia").innerHTML = liczba1 + " + " + liczba2 + " = ";
+                break;
+            case flaga = 1: //-
+
+                document.getElementById("obliczenia").innerHTML = liczba1 + " - " + liczba2 + " = ";
+                break;
+            case flaga = 2: //*
+
+                document.getElementById("obliczenia").innerHTML = liczba1 + " * " + liczba2 + " = ";
+                break;
+
+        }
+
+        document.getElementById("potwierdz").onclick = function () {
+            var wartosc = document.getElementById("liczba").value
+            if (flaga == 0) {
+                
+                console.log("wynik sumy to " + wyniksum);
+                document.getElementById("info").innerHTML = "wynik sumy to " + wyniksum;
+                if(wyniksum == wartosc){
+                    document.getElementById("info2").innerHTML=" Twoja odpoweidz jest poprawna ";
+                    punkty+=1;
+                    document.getElementById("info3").innerHTML=punkty;
+                }else{
+                    document.getElementById("info2").innerHTML=" Twoja odpoweidz jest bledna ";
+                }
+            } else if (flaga == 1) {
+                
+                console.log("wynik odejmowania to " + wynikmin);
+                document.getElementById("info").innerHTML = "wynik odejmowania to " + wynikmin;
+                if(wynikmin == wartosc){
+                    document.getElementById("info2").innerHTML=" Twoja odpoweidz jest poprawna ";
+                    punkty+=1;
+                    document.getElementById("info3").innerHTML=punkty;
+                }else{
+                    document.getElementById("info2").innerHTML=" Twoja odpoweidz jest bledna ";
+                }
+            } else if (flaga == 2) {
+                console.log("wynik mnozenia to " + wynikmin);
+                document.getElementById("info").innerHTML = "wynik mnozenia to " + wynikmno;
+                if(wynikmno == wartosc){
+                    document.getElementById("info2").innerHTML=" Twoja odpoweidz jest poprawna ";
+                    punkty+=1;
+                    document.getElementById("info3").innerHTML=punkty;
+                }else{
+                    document.getElementById("info2").innerHTML=" Twoja odpoweidz jest bledna ";
+                }
+            }
+        }
+    }
+
+    setInterval(wszystko,5000)
+    </script>
+</body>
+
+</html>
